@@ -1,0 +1,956 @@
+
+.smartplanner-wrapper {
+  background-image: url('/study2.png'); /* ✅ Use correct path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+}
+
+/* === Track Page Wrapping === */
+.page-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  overflow-y: auto; /* allow scroll if needed */
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* === Track Plan Cards Wrapper === */
+.track-plan-container {
+  width: 100%;
+  max-width: 1100px;
+  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* === Individual Plan Card === */
+.card1 {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(176, 38, 255, 0.2);
+  backdrop-filter: blur(8px);
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+/* === Responsive Scroll for Overflow === */
+@media screen and (max-height: 600px) {
+  .page-container {
+    height: auto;
+    overflow-y: auto;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+
+/* === Home1 Page Enhancement === */
+.home1-wrapper {
+  min-height: 100vh;
+  background-image: url('/study.png'); /* Already present */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+}
+
+.home1-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Overlay */
+  z-index: 0;
+}
+
+.navbar, .home1-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Welcome Text */
+.home1-content h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: 3rem;
+  animation: fadeInUp 0.7s ease;
+}
+
+.home1-content p {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  text-align: center;
+  margin-top: 10px;
+  animation: fadeInUp 0.9s ease;
+}
+
+/* Dark mode text toggle */
+body.dark-mode .home1-content h1,
+body.dark-mode .home1-content p {
+  color: #050505;
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+/* Card Buttons */
+.card-button {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1s ease;
+}
+
+.card-button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(176, 38, 255, 0.3);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.card-button span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Dark Mode Button Text */
+body.dark-mode .card-button {
+  background: #fff;
+}
+
+body.dark-mode .card-button span {
+  color: #000;
+}
+
+/* Bottom Illustration */
+.illustration {
+  width: 100%;
+  max-width: 420px;
+  margin: 3rem auto 0;
+  display: block;
+  animation: fadeIn 1.4s ease;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* ✅ This pushes logo left and buttons right */
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+
+.dark-mode .navbar {
+  background: #222831dd;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9613e8;
+}
+
+/* Dark Mode Toggle */
+.dark-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.5s ease;
+}
+
+
+body.dark-mode .dark-toggle {
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* === Global Reset & Background === */
+.home1-wrapper {
+  min-height: 100vh;
+  background-image: url('/study.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+.home1-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Darker transparent black */
+  z-index: 0;
+}
+
+.home1-content, .navbar {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+/* === DARK MODE CUSTOMIZATION === */
+body.dark-mode {
+  background-color: #fefefe; /* light background in dark mode */
+  color: #000; /* main text black */
+}
+.dark-mode.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f9f7f9;
+}
+.dark-mode .navbar {
+  background-color: #000000dd;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .dark-toggle {
+  background-color: #000;
+  color: white;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.dark-mode .card-button {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.dark-mode .card-button span {
+  color: white;
+}
+
+.dark-mode .card-button:hover {
+  background-color: #333;
+}
+.dark-mode .logo-text {
+  color: white;
+}
+
+
+/* Welcome Message in Black Text */
+.dark-mode .home1-content h1,
+.dark-mode .home1-content p {
+  color: #000;
+}
+
+/* === Overlay on Background Image === */
+.home1-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3); /* white transparent overlay */
+  z-index: 0;
+}
+
+/* Optional: Overlay changes based on mode */
+body:not(.dark-mode) .home1-wrapper::before {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+body.dark-mode .home1-wrapper::before {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* === Page Container (Centering) === */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+}
+
+/* === Card Styling (Login/Register/Profile) === */
+.card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  animation: popUp 0.3s ease-in-out;
+}
+
+.login-title {
+  color: #B026FF;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* === Input Field === */
+.input-box {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* === Buttons === */
+.button-purple {
+  background-color: #B026FF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.button-purple:hover {
+  background-color: #9300e2;
+  box-shadow: 0 0 8px #B026FF;
+}
+
+.button-outline {
+  background-color: transparent;
+  border: 2px solid #B026FF;
+  color: #B026FF;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+
+/* === Home1 Page === */
+.home1-wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Navbar === */
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffffcc;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.dark-mode .navbar {
+  background: #222831cc;
+  color: #f2f2f2;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  width: 40px;
+  margin-right: 10px;
+}
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9613e8;
+}
+
+
+/* === Home1 Content === */
+.home1-content {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.home1-content h1 {
+  font-size: 32px;
+  color: #e1dae6;
+}
+
+.home1-content p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.dark-mode .home1-content p {
+  color: #eee;
+}
+
+/* === Card Grid for Navigation Buttons === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+}
+
+.card-button {
+  background: #ffffffdd;
+  border-radius: 15px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card-button:hover {
+  transform: scale(1.05);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.card-button span {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.dark-mode .card-button {
+  background: #2e2e2ecc;
+}
+
+.dark-mode .card-button span {
+  color: #f5f5f5;
+}
+
+/* === Illustration at the Bottom === */
+.illustration {
+  width: 100%;
+  max-width: 400px;
+  margin: 3rem auto 0;
+}
+
+/* === Dark Mode Toggle Button Position === */
+
+.dark-mode .dark-toggle {
+  color: #fff;
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+}
+
+.file-input, .input-box, .textarea-input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.file-input:hover, .input-box:hover, .textarea-input:hover {
+  border-color: #7b2cbf;
+  box-shadow: 0 0 5px rgba(123, 44, 191, 0.4);
+}
+
+.button-purple {
+  background: linear-gradient(to right, #7b2cbf, #9d4edd);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.button-purple:hover {
+  background: linear-gradient(to right, #5a189a, #7b2cbf);
+}
+
+.topics-preview {
+  margin-top: 20px;
+  background: #fff8;
+  padding: 10px;
+  border-radius: 8px;
+}
+.loading-spinner {
+  text-align: center;
+  font-size: 1rem;
+  color: #7b2cbf;
+  margin: 10px 0;
+}
+
+
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+  box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3);
+}
+
+.custom-file-upload:hover {
+  background: linear-gradient(135deg, #5a189a, #7b2cbf);
+  transform: scale(1.03);
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+
+/* === Animation === */
+@keyframes popUp {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+/* === upload page === */
+.page-container {
+  background-image: url('/study2.png');
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  height: 100vh; /* Ensures it fills the full viewport height */
+  background-attachment: fixed; /* optional for parallax effect */
+  padding-bottom: 40px; /* optional: adds breathing room below content */
+  padding: 80px 20px 40px; /* 👈 increased top padding */
+   
+}
+
+.card-container {
+  overflow-y: auto; /* Allows scrolling only for content */
+  height: 100vh; /* Matches view height to scroll */
+  padding: 20px; /* Adds some space for cards */
+  scroll-behavior: smooth;
+}
+
+
+
+.card {
+  position: relative;
+  z-index: 2; /* Ensures the card is above the overlay */
+}
+
+
+/* Glassmorphism card */
+.card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.92); /* subtle transparency */
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(176, 38, 255, 0.3);
+  color: #2e0854; /* strong deep purple for all text inside */
+  transition: 0.3s ease-in-out;
+}
+
+
+/* Reuse button styles */
+.button-purple {
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-purple:hover {
+  background: linear-gradient(135deg, #5a189a, #7b2cbf);
+  transform: scale(1.03);
+}
+
+.button-outline {
+  background: transparent;
+  border: 2px solid #b026ff;
+  color: #b026ff;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-outline:hover {
+  background-color: #b026ff;
+  color: white;
+  transform: scale(1.03);
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+}
+
+.congrats-modal {
+  position: relative;
+  background: #ffffffdd;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  box-shadow: 0 8px 25px rgba(176, 38, 255, 0.3);
+  animation: wowZoom 0.6s ease-in-out;
+  text-align: center;
+  color: #3a0ca3;
+}
+
+.congrats-modal h2 {
+  font-size: 2rem;
+  color: #7209b7;
+  margin-bottom: 10px;
+}
+
+.congrats-modal p {
+  font-size: 1.1rem;
+  color: #4a148c;
+}
+
+.celebrate-text {
+  font-weight: bold;
+  color: #560bad;
+  margin-top: 10px;
+}
+
+/* 🎉 Animation */
+@keyframes wowZoom {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+.checklist-item.glow {
+  font-weight: bold;
+  color: #2e0854;
+  text-shadow: 0 0 5px #b026ff;
+}
+
+.card1 {
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* soft purple blend */
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(176, 38, 255, 0.3);
+  color: #2e0854; /* deep violet text for readability */
+  backdrop-filter: blur(8px);
+  transition: 0.3s ease;
+}
+
+
+
+
+/* SmartPlanner */
+.smart-planner-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #f9fbfe;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.smart-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #a925eb;
+  margin-bottom: 2rem;
+}
+
+.input-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-section input,
+.input-section textarea,
+.input-section select {
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+}
+
+.input-section button {
+  width: fit-content;
+  padding: 0.7rem 1.2rem;
+  background-color: #a925eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.topic-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.topic-table th, .topic-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.topic-table th {
+  background-color: #f1f5f9;
+  color: #a925eb;
+  font-weight: 600;
+}
+
+.plan-section {
+  margin-top: 2rem;
+}
+
+.day-card {
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+}
+
+.day-card h4 {
+  color: #a925eb;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.tag.easy {
+  background-color: #10b981;
+}
+
+.tag.medium {
+  background-color: #f59e0b;
+}
+
+.tag.hard {
+  background-color: #ef4444;
+}
+.select-tag {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  color: rgb(3, 1, 5);
+  font-size: 0.9rem;
+  width: 100px;
+  outline: none;
+  text-align: center;
+}
+
+.select-tag.easy {
+  background-color: #10b981;
+}
+
+.select-tag.medium {
+  background-color: #f59e0b;
+}
+
+.select-tag.hard {
+  background-color: #ef4444;
+}
+.primary-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #a925eb;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.primary-button:hover {
+  background-color: #a925eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* === Navigation Right Section (Dark Toggle + Profile) === */
+.nav-right {
+  display: flex;
+  align-items: center;
+   gap: 16px; /* ✅ This adds spacing between Dark Mode and Profile buttons */
+}
+
+.dark-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.5s ease;
+}
+
+body.dark-mode .dark-toggle {
+  background-color: #000;
+  color: white;
+}
+
+/* Profile icon button */
+.profile-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile-icon-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  
+}
+.profile-button:hover .profile-icon-img {
+  transform: scale(1.05);
+  
+}
+
+body.dark-mode .profile-icon-img {
+  background-color: #222; /* ensures visibility on dark background */
+  filter: brightness(1.1);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* or more if needed */
+}
+.card1:first-child {
+  margin-top: 1100px;
+}
